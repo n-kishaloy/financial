@@ -1,23 +1,26 @@
-(defsystem "financial"
+(asdf:defsystem "financial"
   :version "0.0.1"
   :author "Kishaloy Neogi"
   :mailto "nkishaloy@yahoo.com"
-  :license ""
+  :license "MIT"
   :depends-on ("alexandria"
-               "trivia")
+               "trivia"
+               "serapeum"
+               "iterate"
+               "cl-csv")
   :components ((:module "src"
-                :components
-                ((:file "main"))))
+                        :components
+                        ((:file "main"))))
   :description "financial library in Common Lisp"
   :in-order-to ((test-op (test-op "financial/tests"))))
 
-(defsystem "financial/tests"
+(asdf:defsystem "financial/tests"
   :author "Kishaloy Neogi"
   :license ""
   :depends-on ("financial"
                "rove")
   :components ((:module "tests"
-                :components
-                ((:file "main"))))
+                        :components
+                        ((:file "main"))))
   :description "Test system for financial"
   :perform (test-op (op c) (symbol-call :rove :run c)))
