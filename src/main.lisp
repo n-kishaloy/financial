@@ -1,11 +1,15 @@
 (defpackage financial
   (:use #:cl)
   (:local-nicknames (#:sp #:serapeum))
-  (:export #:hello))
+  (:export #:is-leap-year #:days-in-year))
 (in-package #:financial)
 
-(defun hello (name) (format t "Hallo there, ~A ~%" name))
-;; blah blah blah.
+(sp:-> is-leap-year (fixnum) boolean)
+(defun is-leap-year (yr)
+  (or (and (= 0 (mod yr 4))
+           (not (= 0 (mod yr 100))))
+      (= (mod yr 400) 0)))
 
-(sp:-> is-leap-year (fixnum) bool)
-(defun is-leap-year (yr) t)
+(sp:-> days-in-year (fixnum) fixnum)
+(defun days-in-year (yr)
+  (if (is-leap-year yr) 366 365))
