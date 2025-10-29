@@ -1,10 +1,10 @@
 (defpackage financial/tests/main
-  (:use :cl :financial :rove))
+  (:use :cl :financial :rove)
+  (:export #:print-loc))
 (in-package :financial/tests/main)
 
 ;; NOTE: To run this test file, execute `(asdf:test-system :financial)' in your Lisp.
 
-(deftest dates-det
-  (testing ""
-    (ok (= 365 (financial:days-in-year 1999)))
-    (ok (= 2 2))))
+(deftest test-date-yr (testing "" (ok (financial:test-date-yr))))
+(deftest test-present-value (testing "" (ok (financial:test-present-value))))
+

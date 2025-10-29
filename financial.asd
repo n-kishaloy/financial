@@ -7,10 +7,14 @@
                "trivia"
                "serapeum"
                "iterate"
-               "cl-csv")
+               "cl-csv"
+               "local-time"
+               "cl-containers"
+               "coalton")
   :components ((:module "src"
                         :components
-                        ((:file "main"))))
+                        ((:file "main")
+                         (:file "statements"))))
   :description "financial library in Common Lisp"
   :in-order-to ((test-op (test-op "financial/tests"))))
 
@@ -24,3 +28,6 @@
                         ((:file "main"))))
   :description "Test system for financial"
   :perform (test-op (op c) (symbol-call :rove :run c)))
+
+
+  
